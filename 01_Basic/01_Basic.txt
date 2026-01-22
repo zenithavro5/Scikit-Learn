@@ -1,0 +1,156 @@
+CORE MACHINE LEARNING CONCEPTS - BRIEF OVERVIEW
+================================================
+
+1. SUPERVISED VS UNSUPERVISED LEARNING
+================================================
+
+SUPERVISED LEARNING:
+- You have labeled data (input + correct output)
+- Goal: Learn to predict the output for new inputs
+- Examples: Predicting house prices (regression), spam detection (classification)
+- Use when: You have historical data with known outcomes
+
+UNSUPERVISED LEARNING:
+- You have unlabeled data (input only, no correct answers)
+- Goal: Find hidden patterns or structure in data
+- Examples: Customer segmentation (clustering), anomaly detection
+- Use when: You want to explore data or group similar items without predefined categories
+
+Key difference: Supervised = learning with a teacher (labeled answers), Unsupervised = learning without a teacher (find patterns yourself)
+
+
+2. TRAINING, VALIDATION, AND TEST SETS
+================================================
+
+WHY WE SPLIT DATA:
+- Models can "memorize" training data instead of learning general patterns
+- We need separate data to honestly evaluate how well the model works on unseen data
+
+TRAINING SET (typically 60-80% of data):
+- Used to train the model
+- The model learns patterns from this data
+
+VALIDATION SET (typically 10-20% of data):
+- Used to tune hyperparameters and make model selection decisions
+- Helps prevent overfitting during development
+- "Practice exam" for the model
+
+TEST SET (typically 10-20% of data):
+- Used ONLY ONCE at the very end to evaluate final model performance
+- Never used during training or tuning
+- "Final exam" - gives unbiased estimate of real-world performance
+
+HOW TO SPLIT PROPERLY:
+- Split randomly to avoid bias
+- For time series: use chronological split (train on past, test on future)
+- For imbalanced data: use stratified split to maintain class proportions
+- Never let information from test set leak into training
+
+
+3. OVERFITTING AND UNDERFITTING
+================================================
+
+UNDERFITTING (High Bias):
+- Model is too simple to capture the underlying pattern
+- Poor performance on both training and test data
+- Like studying the wrong material for an exam
+- Solution: Use more complex model, add more features, train longer
+
+OVERFITTING (High Variance):
+- Model is too complex and memorizes training data including noise
+- Great performance on training data, poor on test data
+- Like memorizing answers instead of understanding concepts
+- Solution: Use simpler model, add regularization, get more training data, use dropout
+
+THE GOLDILOCKS ZONE:
+- You want a model that's "just right" - complex enough to capture patterns but simple enough to generalize
+- This is the bias-variance tradeoff
+
+BIAS-VARIANCE TRADEOFF:
+- Bias: Error from oversimplifying (underfitting)
+- Variance: Error from being too sensitive to training data (overfitting)
+- Goal: Find the sweet spot that minimizes total error
+
+
+4. MODEL EVALUATION METRICS
+================================================
+
+CLASSIFICATION METRICS:
+--------------------
+
+ACCURACY:
+- Percentage of correct predictions
+- Formula: (Correct Predictions) / (Total Predictions)
+- Problem: Misleading with imbalanced data (e.g., 95% accuracy predicting "not fraud" when only 5% are fraud)
+
+PRECISION:
+- Of all predicted positives, how many were actually positive?
+- Formula: True Positives / (True Positives + False Positives)
+- Use when: False positives are costly (e.g., spam filter marking important emails as spam)
+
+RECALL (Sensitivity):
+- Of all actual positives, how many did we find?
+- Formula: True Positives / (True Positives + False Negatives)
+- Use when: False negatives are costly (e.g., missing cancer diagnosis)
+
+F1-SCORE:
+- Harmonic mean of precision and recall
+- Formula: 2 × (Precision × Recall) / (Precision + Recall)
+- Use when: You need balance between precision and recall
+
+ROC-AUC (Receiver Operating Characteristic - Area Under Curve):
+- Measures model's ability to distinguish between classes across all thresholds
+- Score from 0 to 1 (0.5 = random guessing, 1.0 = perfect)
+- Use when: You want threshold-independent metric or have imbalanced classes
+
+QUICK EXAMPLE:
+Imagine predicting if emails are spam (100 emails, 20 actually spam):
+- You predict 25 as spam: 15 correct (true positives), 10 wrong (false positives)
+- You missed 5 actual spam emails (false negatives)
+- Precision: 15/25 = 60% (of predicted spam, 60% were actually spam)
+- Recall: 15/20 = 75% (found 75% of all spam)
+- F1: 2×(0.6×0.75)/(0.6+0.75) = 0.67
+
+
+REGRESSION METRICS:
+--------------------
+
+MSE (Mean Squared Error):
+- Average of squared differences between predicted and actual values
+- Formula: Average of (Predicted - Actual)²
+- Penalizes large errors heavily
+- Problem: Hard to interpret (squared units)
+
+RMSE (Root Mean Squared Error):
+- Square root of MSE
+- Formula: √MSE
+- Same units as target variable (easier to interpret)
+- Use when: You want to understand typical prediction error
+
+R² (R-Squared / Coefficient of Determination):
+- Proportion of variance in target explained by the model
+- Score from 0 to 1 (can be negative for terrible models)
+- 0 = model explains nothing, 1 = perfect predictions
+- Use when: You want to know how much better your model is vs. just predicting the average
+
+QUICK EXAMPLE:
+Predicting house prices:
+- Actual: $300k, Predicted: $320k → Error = $20k
+- MSE: Average of all squared errors
+- RMSE: Might be $25k (typical prediction error)
+- R²: 0.85 means model explains 85% of price variation
+
+
+CHOOSING THE RIGHT METRIC:
+================================================
+
+Classification:
+- Balanced classes → Accuracy
+- Imbalanced classes → F1-Score or ROC-AUC
+- Cost-sensitive (false positives costly) → Precision
+- Cost-sensitive (false negatives costly) → Recall
+
+Regression:
+- Want interpretable error → RMSE
+- Want to penalize outliers heavily → MSE
+- Want relative performance → R²
