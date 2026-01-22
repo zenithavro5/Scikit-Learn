@@ -1,0 +1,152 @@
+SCIKIT-LEARN LEARNING ROADMAP
+========================================
+
+A comprehensive roadmap to master scikit-learn, structured from foundations to advanced topics.
+
+========================================
+PHASE 1: PREREQUISITES (2-3 weeks)
+========================================
+
+Before diving into scikit-learn, ensure you're comfortable with:
+
+Python fundamentals: Variables, functions, loops, conditionals, and object-oriented basics.
+
+NumPy: Array operations, indexing, broadcasting, and basic linear algebra. This is crucial since scikit-learn builds on NumPy arrays.
+
+Pandas: DataFrames, data cleaning, merging, and basic exploratory data analysis. Most real-world data you'll work with comes in this format.
+
+Matplotlib/Seaborn: Basic plotting for visualizing data and results.
+
+========================================
+PHASE 2: MACHINE LEARNING FOUNDATIONS (1-2 weeks)
+========================================
+
+Understand core concepts before touching code:
+
+Supervised vs unsupervised learning: Know the difference and when to use each approach.
+
+Training, validation, and test sets: Why we split data and how to do it properly.
+
+Overfitting and underfitting: The bias-variance tradeoff.
+
+Model evaluation metrics: Accuracy, precision, recall, F1-score, ROC-AUC for classification; MSE, RMSE, R² for regression.
+
+========================================
+PHASE 3: SCIKIT-LEARN BASICS (2-3 weeks)
+========================================
+
+API conventions: Everything in scikit-learn follows a consistent pattern with .fit(), .predict(), .transform() methods. Understanding this makes learning any algorithm easier.
+
+Data loading: Use built-in datasets like load_iris(), load_boston(), make_classification() to practice without worrying about data cleaning initially.
+
+Train-test splitting: Master train_test_split() with different parameters.
+
+Your first models: Start simple with Linear Regression and Logistic Regression. Focus on understanding the workflow more than the algorithms themselves.
+
+========================================
+PHASE 4: CORE ALGORITHMS (4-6 weeks)
+========================================
+
+Work through these systematically, implementing each on multiple datasets:
+
+Linear models: LinearRegression, Ridge, Lasso, ElasticNet, LogisticRegression. Understand regularization.
+
+Tree-based models: DecisionTreeClassifier/Regressor, RandomForestClassifier/Regressor, GradientBoostingClassifier/Regressor. These are workhorses in real applications.
+
+Support Vector Machines: SVC, SVR with different kernels.
+
+Naive Bayes: GaussianNB, MultinomialNB for text classification.
+
+K-Nearest Neighbors: KNeighborsClassifier/Regressor.
+
+Clustering: KMeans, DBSCAN, hierarchical clustering.
+
+Dimensionality reduction: PCA, t-SNE for visualization.
+
+For each algorithm, understand: when to use it, its assumptions, its hyperparameters, and its limitations.
+
+========================================
+PHASE 5: PREPROCESSING & FEATURE ENGINEERING (2-3 weeks)
+========================================
+
+Handling missing data: SimpleImputer with different strategies.
+
+Scaling features: StandardScaler, MinMaxScaler, RobustScaler. Know when each is appropriate.
+
+Encoding categorical variables: OneHotEncoder, OrdinalEncoder, LabelEncoder.
+
+Feature selection: SelectKBest, RFE (Recursive Feature Elimination), feature importances from tree models.
+
+Pipeline construction: Chain preprocessing and modeling steps with Pipeline and ColumnTransformer. This is essential for clean, reproducible code.
+
+========================================
+PHASE 6: MODEL EVALUATION & SELECTION (2-3 weeks)
+========================================
+
+Cross-validation: k-fold, stratified k-fold, leave-one-out. Use cross_val_score() and cross_validate().
+
+Hyperparameter tuning: GridSearchCV and RandomizedSearchCV. Learn when to use each.
+
+Evaluation metrics deep dive: Confusion matrices, classification reports, ROC curves, precision-recall curves.
+
+Learning curves: Diagnose overfitting/underfitting with learning_curve().
+
+Validation curves: Understand how hyperparameters affect performance.
+
+========================================
+PHASE 7: ADVANCED TOPICS (3-4 weeks)
+========================================
+
+Ensemble methods: Bagging, boosting, stacking. Understand VotingClassifier and StackingClassifier.
+
+Imbalanced datasets: SMOTE (from imblearn), class weights, threshold adjustment.
+
+Custom transformers: Build your own preprocessing steps that integrate with pipelines.
+
+Model persistence: Save and load models with joblib or pickle.
+
+Text processing: CountVectorizer, TfidfVectorizer for NLP tasks.
+
+Multi-output and multi-label classification: Handle complex target structures.
+
+========================================
+PHASE 8: REAL-WORLD PROJECTS (Ongoing)
+========================================
+
+Apply everything to complete projects:
+
+Regression project: Predict house prices, stock prices, or sales forecasting.
+
+Binary classification: Fraud detection, churn prediction, or disease diagnosis.
+
+Multi-class classification: Image classification (with feature extraction), text categorization.
+
+Clustering project: Customer segmentation, document clustering.
+
+End-to-end pipeline: From raw data to deployed model with proper validation.
+
+========================================
+STUDY TIPS
+========================================
+
+Code daily: Even 30 minutes of hands-on practice beats hours of passive reading.
+
+Read the documentation: Scikit-learn has excellent docs with examples. Make this your primary resource.
+
+Kaggle competitions: Start with beginner-friendly competitions to apply your skills on real datasets.
+
+Compare algorithms: On the same dataset, try multiple algorithms and understand why some perform better.
+
+Debug systematically: Use model.score(), print shapes, check data types. Most errors come from data shape mismatches.
+
+========================================
+RECOMMENDED RESOURCES
+========================================
+
+The official scikit-learn documentation and tutorials are genuinely excellent. The "User Guide" section explains each algorithm's theory and usage. Andreas Müller (core scikit-learn developer) has great video tutorials and a book "Introduction to Machine Learning with Python." Kaggle Learn's micro-courses provide hands-on practice.
+
+========================================
+TIMELINE NOTE
+========================================
+
+This roadmap assumes roughly 10-15 hours per week. Adjust the timeline based on your schedule and prior knowledge. The key is consistent practice with increasingly complex projects rather than rushing through topics superficially.
